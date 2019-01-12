@@ -18,7 +18,7 @@ contract WhitelistedRole is WhitelistAdminRole {
     Roles.Role private _whitelisteds;
 
     modifier onlyWhitelisted() {
-        require(isWhitelisted(msg.sender));
+        require(isWhitelisted(msg.sender), "WHITELISTED_ONLY");
         _;
     }
 

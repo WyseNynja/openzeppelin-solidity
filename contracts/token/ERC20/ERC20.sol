@@ -70,7 +70,7 @@ contract ERC20 is IERC20 {
      * @param value The amount of tokens to be spent.
      */
     function approve(address spender, uint256 value) public returns (bool) {
-        require(spender != address(0));
+        require(spender != address(0), "ERC20:BAD_APPROVE_ADDRESS");
 
         _allowed[msg.sender][spender] = value;
         emit Approval(msg.sender, spender, value);
@@ -135,7 +135,7 @@ contract ERC20 is IERC20 {
     * @param value The amount to be transferred.
     */
     function _transfer(address from, address to, uint256 value) internal {
-        require(to != address(0));
+        require(to != address(0), "ERC20:BAD_TRANSFER_ADDRESS");
 
         _balances[from] = _balances[from].sub(value);
         _balances[to] = _balances[to].add(value);
@@ -150,7 +150,7 @@ contract ERC20 is IERC20 {
      * @param value The amount that will be created.
      */
     function _mint(address account, uint256 value) internal {
-        require(account != address(0));
+        require(account != address(0), "ERC20:BAD_MINT_ADDRESS");
 
         _totalSupply = _totalSupply.add(value);
         _balances[account] = _balances[account].add(value);
@@ -164,7 +164,7 @@ contract ERC20 is IERC20 {
      * @param value The amount that will be burnt.
      */
     function _burn(address account, uint256 value) internal {
-        require(account != address(0));
+        require(account != address(0), "ERC20:BAD_BURN_ADDRESS");
 
         _totalSupply = _totalSupply.sub(value);
         _balances[account] = _balances[account].sub(value);
