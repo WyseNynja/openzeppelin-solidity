@@ -15,7 +15,7 @@ contract PauserRole {
     }
 
     modifier onlyPauser() {
-        require(isPauser(msg.sender));
+        require(isPauser(msg.sender), "PAUSER_ONLY");
         _;
     }
 

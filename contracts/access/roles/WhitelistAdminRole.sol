@@ -19,7 +19,7 @@ contract WhitelistAdminRole {
     }
 
     modifier onlyWhitelistAdmin() {
-        require(isWhitelistAdmin(msg.sender));
+        require(isWhitelistAdmin(msg.sender), "WHITELIST_ADMIN_ONLY");
         _;
     }
 
